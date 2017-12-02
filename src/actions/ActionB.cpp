@@ -1,6 +1,6 @@
 #include "../../headers/actions/ActionB.h"
 
-ActionB::ActionB(Object *const o): Action(o, typeid(ActionB).hash_code()) {
+ActionB::ActionB(std::initializer_list<std::shared_ptr<Object>> l): Action(l, ActionB::id) {
 }
 
 ActionB::~ActionB() {

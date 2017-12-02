@@ -8,14 +8,14 @@ class Object;
 class Action;
 
 
-typedef void (Object::*ActionExperiencer)(Action const *const action);
+typedef void (Object::*ActionExperiencer)(std::shared_ptr<Action> action);
 typedef std::unordered_map<uint8, ActionExperiencer> ImplementationMap;
 
 class ImplementationMapperObjAct {
 public:
     
     static void register_experiencer(uint4 objectType, uint4 actionType, ActionExperiencer func);
-    static ActionExperiencer get_experiencer_or_null(uint4 objectType, uint4 actionType);
+    static ActionExperiencer get_experiencer(uint4 objectType, uint4 actionType);
 protected:
     static uint8 key(uint4 a, uint4 b);
     static ImplementationMap object_action_implementation;

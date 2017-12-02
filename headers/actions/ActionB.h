@@ -4,11 +4,11 @@
 
 class ActionB : public Action{
 public:
-    ActionB(Object *const o);
+    ActionB(std::initializer_list<std::shared_ptr<Object>> o);
     virtual ~ActionB();
     
     virtual void updateConsideringConstrains(const Engine * const engine);
-
+    static const uint4 id = 2;
 private:
 
 };

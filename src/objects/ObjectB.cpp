@@ -2,16 +2,16 @@
 #include <iostream>
 
 
-ObjectB::ObjectB(): Object(typeid(ObjectB).hash_code()) {
+ObjectB::ObjectB(): Object(ObjectB::id) {
 }
 
 ObjectB::~ObjectB() {
 }
 
-void ObjectB::experienceA(const ActionA* const a) {
+void ObjectB::experienceA(std::shared_ptr<ActionA> a) {
     std::cout << "Action A in Object B" << std::endl;
 }
 
-void ObjectB::experienceB(const ActionB* const b) {
+void ObjectB::experienceB(std::shared_ptr<ActionB> b) {
     std::cout << "Action B in Object B" << std::endl;
 }

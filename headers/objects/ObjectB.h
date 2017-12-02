@@ -9,8 +9,9 @@ class ObjectB : public Object{
 public:
     ObjectB();
     virtual ~ObjectB();
-    void experienceA(const ActionA * const a);
-    void experienceB(const ActionB * const b);
+    void experienceA(std::shared_ptr<ActionA> a);
+    void experienceB(std::shared_ptr<ActionB> b);
+    static const uint4 id = 1002;
 };
 
 #endif /* OBJECTB_H */

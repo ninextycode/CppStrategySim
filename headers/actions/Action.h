@@ -4,17 +4,19 @@
 #include "../objects/IdHolder.h"
 
 class Engine {};
-class Object;
 
-class Action : public IdHolder {
+class Action : public IdHolder, public std::enable_shared_from_this<Action> {
 public:
-    Action(Object *const affected_object, uint4 id);
+    Action(std::initializer_list<std::shared_ptr<Object>> affected_objects, uint4 id);
     virtual ~Action();
+    // updateConsideringConstrains is pure virtual because I want to force explicit declaration of the changes forced by
+    // the current state, or explicit declaration of their absence
     virtual void updateConsideringConstrains(Engine const *const engine) = 0;
-    virtual void perform();
+    // every action's perform is just calling the experience method of affected objects, so perform is non-virtual
+    void perform();
 protected:   
     bool performed = false;
-    Object *const affected_object;
+    std::list<std::shared_ptr<Object>> const affected_objects;
 };
 
 #endif /* ACTION_H */

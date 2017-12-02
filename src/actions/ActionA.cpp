@@ -2,7 +2,7 @@
 #include "../../headers/objects/Object.h"
 
 
-ActionA::ActionA(Object *const o): Action(o, typeid(ActionA).hash_code()) {
+ActionA::ActionA(std::initializer_list<std::shared_ptr<Object>> l): Action(l, ActionA::id) {
 }
 
 

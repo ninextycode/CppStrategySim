@@ -1,17 +1,17 @@
 #include "../../headers/objects/ObjectA.h"
 #include <iostream>
 
-ObjectA::ObjectA(): Object(typeid(ObjectA).hash_code()) {
+ObjectA::ObjectA(): Object(ObjectA::id) {
 }
 
 
 ObjectA::~ObjectA() {
 }
 
-void ObjectA::experienceA(ActionA const* const a) {
+void ObjectA::experienceA(std::shared_ptr<ActionA>) {
     std::cout << "Action A in Object A" << std::endl;
 }
 
-void ObjectA::experienceB(ActionB const* const b) {
+void ObjectA::experienceB(std::shared_ptr<ActionB>) {
     std::cout << "Action B in Object A" << std::endl;
 }

@@ -9,23 +9,25 @@ ImplementationMapFiller::ImplementationMapFiller() {
 
 void ImplementationMapFiller::fill() {
     ImplementationMapperObjAct::register_experiencer(
-            typeid(ObjectA).hash_code(), 
-            typeid(ActionA).hash_code(), 
+            ObjectA::id, 
+            ActionA::id, 
             (ActionExperiencer) (&ObjectA::experienceA));
     
     ImplementationMapperObjAct::register_experiencer(
-            typeid(ObjectA).hash_code(),
-            typeid(ActionB).hash_code(), 
+            ObjectA::id, 
+            ActionB::id, 
             (ActionExperiencer) (&ObjectA::experienceB));
     
     ImplementationMapperObjAct::register_experiencer(
-            typeid(ObjectB).hash_code(),
-            typeid(ActionA).hash_code(), 
+            ObjectB::id, 
+            ActionA::id, 
             (ActionExperiencer) (&ObjectB::experienceA));
     
     ImplementationMapperObjAct::register_experiencer(
-            typeid(ObjectB).hash_code(),
-            typeid(ActionB).hash_code(), 
+            ObjectB::id, 
+            ActionB::id, 
             (ActionExperiencer) (&ObjectB::experienceB));
+   
+
 }
 

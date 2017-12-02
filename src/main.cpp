@@ -1,26 +1,26 @@
-#include <cstdlib>
 #include "../headers/objects/ObjectA.h"
 #include "../headers/objects/ObjectB.h"
 #include "../headers/actions/ActionA.h"
 #include "../headers/actions/ActionB.h"
 #include "../headers/action_mapping/ImplementationMapFiller.h"
 
-using namespace std;
 
+#include "../headers/objects/Forest.h"
 
-int main(int argc, char** argv) {
-   
+int main() {
+    Forest f = {};
     ImplementationMapFiller::fill();
     
     
-    Object *o_a = new ObjectA();
-    Object *o_b = new ObjectB();
-    Object *o_a1 = new ObjectA();
+    ObjectPtr o_a0 = std::make_shared<ObjectA>();
+    ObjectPtr o_b = std::make_shared<ObjectB>();
+    ObjectPtr o_a1 = std::make_shared<ObjectA>();
     
-    Action *a_a_o_a = new ActionA(o_a);
-    Action *a_a_o_b = new ActionA(o_b);
-    Action *a_b_o_a = new ActionB(o_a1);
-    Action *a_b_o_b = new ActionB(o_b);
+    
+    ActionPtr a_a_o_a = std::make_shared<ActionA>(init_list({o_a0}));
+    ActionPtr a_a_o_b = std::make_shared<ActionB>(init_list({o_b}));
+    ActionPtr a_b_o_a = std::make_shared<ActionA>(init_list({o_a1}));
+    ActionPtr a_b_o_b = std::make_shared<ActionB>(init_list({o_b, o_a1, o_a0}));
     
     a_a_o_a->perform();
     a_a_o_b->perform();
@@ -30,12 +30,7 @@ int main(int argc, char** argv) {
     
     //a_b_o_a->perform();    will throw exception
         
-    delete 
-            a_a_o_a, 
-            a_a_o_b,
-            a_b_o_a,
-            a_b_o_b,
-            o_a, o_a1, o_b;
-    return 0;
-}
 
+    return 0;
+
+}
