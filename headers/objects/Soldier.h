@@ -5,19 +5,20 @@
 #include "Object.h"
 #include "../actions/InviteToMove.h"
 
-class Soldier : Object {
+class Soldier : public Object {
 public:
     static const float body_side;
-    static const uint4 id = 2003934;
 
-    Soldier();
+    Soldier(point2d position);
     virtual ~Soldier();
     //void move();
-    void move(InviteToMove const* const invite);
+    void experience(InviteToMovePtr invite, EnginePtr env);
 private:
     point2d velocity;
     box2d body;
 };
+
+typedef std::shared_ptr<Soldier> SoldierPtr;
 
 #endif /* SOLDIER_H */
 

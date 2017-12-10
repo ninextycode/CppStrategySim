@@ -2,7 +2,10 @@
 
 const float Soldier::body_side = 1.0f;
 
-Soldier::Soldier() : Object(id) {
+Soldier::Soldier(point2d position):
+    body(position, 
+        point2d(position.x() + body_side,
+            position.x() + body_side)) {
 }
 
 Soldier::~Soldier() {

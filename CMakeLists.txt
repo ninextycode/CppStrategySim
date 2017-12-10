@@ -9,5 +9,11 @@ set(CMAKE_CXX_STANDARD 14)
 
 file(GLOB_RECURSE SOURCE_FILES ${PROJECT_SOURCE_DIR}/*.cpp) 
 
-
+add_library(engine_lib headers/Engine.h  ${SOURCE_FILES})
 add_executable(main ${PROJECT_SOURCE_DIR}/main.cpp ${SOURCE_FILES})
+target_link_libraries(main engine_lib)
+
+
+enable_testing ()
+add_subdirectory (tests)
+add_test(NAME test1 COMMAND test_executable)

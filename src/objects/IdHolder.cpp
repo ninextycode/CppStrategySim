@@ -1,8 +1,14 @@
 #include "../../headers/objects/IdHolder.h"
 
-IdHolder::IdHolder(uint4 const id): id(id) {
+
+IdHolder::IdHolder() : id(IdHolder::getId()) {
 }
 
 IdHolder::~IdHolder() {
+}
+
+uint4 IdHolder::lastid = 0;
+uint4 IdHolder::getId() {
+    return IdHolder::lastid++;
 }
 

@@ -1,8 +1,9 @@
 #include "../../headers/stdafx.h"
 #include "../../headers/actions/InviteToMove.h"
 
-InviteToMove::InviteToMove(std::initializer_list<std::shared_ptr<Object>> affected_objects)
-        : Action(affected_objects, id) {
+InviteToMove::InviteToMove(ObjectPtr actor,  EnginePtr en,
+        std::initializer_list<ObjectPtr> affected_objects)
+        : Action(actor,  en, affected_objects) {
 }
 
 

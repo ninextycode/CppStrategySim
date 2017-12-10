@@ -6,13 +6,14 @@
 
 class InviteToMove : Action {
 public:
-    static const uint4 id = 975535635;
     InviteToMove();
-    InviteToMove(std::initializer_list<std::shared_ptr<Object>> l);
+    InviteToMove(ObjectPtr actor,  EnginePtr en,
+            std::initializer_list<ObjectPtr> l);
     virtual ~InviteToMove();
 private:
     
 };
 
+typedef std::shared_ptr<InviteToMove> InviteToMovePtr;
 #endif /* INVITETOMOVE_H */
 
